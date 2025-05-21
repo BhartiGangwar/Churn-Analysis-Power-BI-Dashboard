@@ -1,85 +1,124 @@
-# Churn-Analysis-Power-BI-Dashboard
-Tools Used
-SQL Server (ETL & Data Transformation)
-Power BI (Data Cleaning, Modeling, and Visualization)
-ML (Random Forest Classifier)
+📊 Churn Analysis Power BI Dashboard
 
+This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning (Random Forest Classifier). The goal is to uncover churn 
 
+patterns, create an insightful dashboard, and build a model that helps predict churners.
+
+🛠️ Tools & Technologies
+
+SQL Server – ETL (Extract, Transform, Load), data cleansing, and view creation
+
+Power BI – Data cleaning, modeling, DAX measures, and visualization
+
+Machine Learning – Random Forest Classifier for churn prediction
 
 🚀 Project Workflow
-🧩 STEP 1 – ETL in SQL Server
-1. Data Loading & Exploration:
-Created database and imported CSV file into SQL Server.
-Checked distinct values and performed exploratory SQL queries:
--- Gender Distribution
-SELECT Gender, COUNT(Gender) AS TotalCount,
-       COUNT(Gender) * 1.0 / (SELECT COUNT(*) FROM stg_Churn) AS Percentage
-FROM stg_Churn
-GROUP BY Gender;
 
--- Contract Type
-SELECT Contract, COUNT(Contract) AS TotalCount,
-       COUNT(Contract) * 1.0 / (SELECT COUNT(*) FROM stg_Churn) AS Percentage
-FROM stg_Churn
-GROUP BY Contract;
+📍 STEP 1 – ETL in SQL Server
+Data Loading & Exploration
 
--- Customer Revenue by Status
-SELECT Customer_Status, COUNT(Customer_Status) AS TotalCount,
-       SUM(Total_Revenue) AS TotalRev,
-       SUM(Total_Revenue) * 1.0 / (SELECT SUM(Total_Revenue) FROM stg_Churn) * 100 AS RevPercentage
-FROM stg_Churn
-GROUP BY Customer_Status;
+Imported raw CSV data into a SQL Server staging table (stg_Churn)
 
--- State-wise Distribution
-SELECT State, COUNT(State) AS TotalCount,
-       COUNT(State) * 1.0 / (SELECT COUNT(*) FROM stg_Churn) AS Percentage
-FROM stg_Churn
-GROUP BY State
-ORDER BY Percentage DESC;
+Performed SQL queries for initial analysis:
 
-2. Null Handling:
-Checked for null values, removed or replaced where necessary.
-Inserted cleaned data into production table prod_Churn.
+Gender Distribution
 
-3. Created Views for Power BI Reporting.
+Contract Type Breakdown
 
-🛠️ STEP 2 – Power BI Transformation
-Added Columns:
-Churn Status: 1 if Customer_Status = "Churned" else 0
-Monthly Charge Range: Categorized charge into bins like <20, 20–50, etc.
-Created Reference Tables:
-Age Group Mapping:
-< 20, 20–35, 36–50, > 50
-Added custom sorting column.
-Tenure Group Mapping:
-<6, 6–12, 12–18, 18–24, >=24 Months
-Added custom sorting column.
-Services Table:
-Used Unpivot to reshape services columns into Service and Status.
+Customer Revenue by Churn Status
 
+State-wise Distribution
 
-📏 STEP 3 – Power BI Measures
+Null Handling
+
+Checked and handled nulls
+
+Cleaned data was inserted into a production table (prod_Churn)
+
+Views Creation
+
+Created SQL views (vw_ChurnData, vw_JoinData) for Power BI reporting and ML modeling
+
+📊 STEP 2 – Power BI Data Transformation
+
+Added New Columns
+
+Churn Status: 1 if Customer_Status = "Churned", else 0
+
+Monthly Charge Range: Binned into categories like <20, 20–50, >50, etc.
+
+Reference Tables for Grouping
+
+Age Group Mapping: <20, 20–35, 36–50, >50
+
+Tenure Group Mapping: <6, 6–12, 12–18, 18–24, >=24 months
+
+Used custom sorting columns for correct ordering
+
+Services Table
+
+Used Unpivot to convert service columns into a normalized Service-Status format
+
+📐 STEP 3 – Power BI DAX Measures
+
+Defined custom DAX measures for meaningful insights:
+
 Total Customers = COUNT(prod_Churn[Customer_ID])
+
 New Joiners = CALCULATE(COUNT(Customer_ID), Customer_Status = "Joined")
+
 Total Churn = SUM(prod_Churn[Churn Status])
+
 Churn Rate = [Total Churn] / [Total Customers]
 
-📊 STEP 4 – Visualization
-Created interactive Power BI visuals including:
-Gender & State-wise churn
-Tenure and Monthly Charges
-Revenue contribution
-Churn rate KPIs
+📈 STEP 4 – Dashboard & Visualization
+
+Built an interactive Power BI dashboard with:
+
+Gender-wise and State-wise Churn Breakdown
+
+Monthly Charges & Tenure Distribution
+
+Revenue Contribution by Customer Status
+
+Key Metrics and KPIs on Churn Rate, Total Customers, etc.
+
+🤖 STEP 5 – Churn Prediction using ML (Random Forest)
+
+Data Preparation
+
+Exported SQL views (vw_ChurnData, vw_JoinData) to Excel using Power BI's SQL Server connection
+
+Saved data as Prediction_Data.xlsx
+
+Model Building
+
+Used Random Forest Classifier to predict churn based on customer attributes
+
+Evaluated accuracy and feature importance
+
+📂 Project Structure
+Churn-Analysis-Power-BI-Dashboard/
+├── SQL_Scripts/
+│   └── ETL_and_Queries.sql
+├── PowerBI_Dashboard/
+│   └── Churn_Analysis.pbix
+├── ML_Model/
+│   └── churn_prediction_random_forest.ipynb
+├── Prediction_Data.xlsx
+├── README.md
+└── Screenshots/
+    └── dashboard_views.png
+    
+📌 Key Takeaways
+
+Combines descriptive (dashboard) and predictive (ML model) analytics
+
+Clear workflow from raw data to business insights
+
+Scalable and interpretable model for customer churn prediction
 
 
-STEP 5 – Predict Customer Churn
- Data Preparation for ML model
- Let us first import views in an Excel file.
-o   Go to Data >> Get Data >> SQL Server Database
-o   Enter the Server Name & Database name to connect to SQL Server
-o   Import both vw_ChurnData & vw_JoinData
-o   Save the file as Prediction_Data
-Create Churn Prediction Model – Random Forest
 
 
 
