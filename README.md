@@ -1,8 +1,10 @@
 📊 Churn Analysis Power BI Dashboard
 
+
 This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning (Random 
 
 Forest Classifier). The goal is to uncover churn patterns, create an insightful dashboard, and build a model that helps predict churners.
+
 
 🛠️ Tools & Technologies
 
@@ -11,6 +13,7 @@ SQL Server – ETL (Extract, Transform, Load), data cleansing, and view creation
 Power BI – Data cleaning, modeling, DAX measures, and visualization
 
 Machine Learning – Random Forest Classifier for churn prediction
+
 
 🚀 Project Workflow
 
@@ -40,6 +43,7 @@ Views Creation
 
 Created SQL views (vw_ChurnData, vw_JoinData) for Power BI reporting and ML modeling
 
+
 📊 STEP 2 – Power BI Data Transformation
 
 Added New Columns
@@ -60,6 +64,7 @@ Services Table
 
 Used Unpivot to convert service columns into a normalized Service-Status format
 
+
 📐 STEP 3 – Power BI DAX Measures
 
 Defined custom DAX measures for meaningful insights:
@@ -71,6 +76,7 @@ New Joiners = CALCULATE(COUNT(Customer_ID), Customer_Status = "Joined")
 Total Churn = SUM(prod_Churn[Churn Status])
 
 Churn Rate = [Total Churn] / [Total Customers]
+
 
 📈 STEP 4 – Dashboard & Visualization
 
@@ -87,6 +93,7 @@ Key Metrics and KPIs on Churn Rate, Total Customers, etc.
 📸 Add a screenshot of the main Power BI dashboard here
 ![Dashboard View](screenshots/powerbi_dashboard.png)
 
+
 🤖 STEP 5 – Churn Prediction using ML (Random Forest)
 
 Data Preparation
@@ -102,6 +109,7 @@ Used Random Forest Classifier to predict churn based on customer attributes
 Evaluated accuracy and feature importance
 
 ![ML Model](screenshots/ml_model_metrics.png)
+
 
 📂 Project Structure
 
@@ -124,6 +132,7 @@ Churn-Analysis-Power-BI-Dashboard/
 ├── README.md
 
 └── Screenshots
+
 
 📌 Key Takeaways
 
