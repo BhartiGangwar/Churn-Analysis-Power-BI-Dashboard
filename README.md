@@ -1,8 +1,8 @@
 📊 Churn Analysis Power BI Dashboard
 
-This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning (Random Forest Classifier). The goal is to uncover churn 
+This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning (Random 
 
-patterns, create an insightful dashboard, and build a model that helps predict churners.
+Forest Classifier). The goal is to uncover churn patterns, create an insightful dashboard, and build a model that helps predict churners.
 
 🛠️ Tools & Technologies
 
@@ -15,6 +15,7 @@ Machine Learning – Random Forest Classifier for churn prediction
 🚀 Project Workflow
 
 📍 STEP 1 – ETL in SQL Server
+
 Data Loading & Exploration
 
 Imported raw CSV data into a SQL Server staging table (stg_Churn)
@@ -83,6 +84,9 @@ Revenue Contribution by Customer Status
 
 Key Metrics and KPIs on Churn Rate, Total Customers, etc.
 
+📸 Add a screenshot of the main Power BI dashboard here
+![Dashboard View](screenshots/powerbi_dashboard.png)
+
 🤖 STEP 5 – Churn Prediction using ML (Random Forest)
 
 Data Preparation
@@ -97,19 +101,30 @@ Used Random Forest Classifier to predict churn based on customer attributes
 
 Evaluated accuracy and feature importance
 
+![ML Model](screenshots/ml_model_metrics.png)
+
 📂 Project Structure
+
 Churn-Analysis-Power-BI-Dashboard/
+
 ├── SQL_Scripts/
+
 │   └── ETL_and_Queries.sql
+
 ├── PowerBI_Dashboard/
+
 │   └── Churn_Analysis.pbix
+
 ├── ML_Model/
+
 │   └── churn_prediction_random_forest.ipynb
+
 ├── Prediction_Data.xlsx
+
 ├── README.md
-└── Screenshots/
-    └── dashboard_views.png
-    
+
+└── Screenshots
+
 📌 Key Takeaways
 
 Combines descriptive (dashboard) and predictive (ML model) analytics
@@ -117,6 +132,7 @@ Combines descriptive (dashboard) and predictive (ML model) analytics
 Clear workflow from raw data to business insights
 
 Scalable and interpretable model for customer churn prediction
+
 
 
 
