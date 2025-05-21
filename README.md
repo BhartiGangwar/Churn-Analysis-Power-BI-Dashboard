@@ -91,7 +91,7 @@ Revenue Contribution by Customer Status
 Key Metrics and KPIs on Churn Rate, Total Customers, etc.
 
 📸 Add a screenshot of the main Power BI dashboard here
-![Dashboard View](screenshots/powerbi_dashboard.png)
+![Dashboard View](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/DemoScreenshot.png?raw=true)
 
 
 🤖 STEP 5 – Churn Prediction using ML (Random Forest)
