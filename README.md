@@ -60,9 +60,6 @@ Tenure Group Mapping: <6, 6–12, 12–18, 18–24, >=24 months
 
 Used custom sorting columns for correct ordering
 
-Services Table
-
-Used Unpivot to convert service columns into a normalized Service-Status format
 
 
 📐 STEP 3 – Power BI DAX Measures
