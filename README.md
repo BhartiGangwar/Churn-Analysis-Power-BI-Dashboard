@@ -1,9 +1,9 @@
 📊 Churn Analysis Power BI Dashboard
 
 
-This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning (Random 
+This project focuses on analyzing and predicting customer churn using a full-stack data workflow including SQL Server, Power BI, and Machine Learning\
 
-Forest Classifier). The goal is to uncover churn patterns, create an insightful dashboard, and build a model that helps predict churners.
+(Random Forest Classifier). The goal is to uncover churn patterns, create an insightful dashboard, and build a model that helps predict churners.
 
 
 🛠️ Tools & Technologies
