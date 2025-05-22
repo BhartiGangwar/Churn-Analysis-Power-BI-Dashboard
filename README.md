@@ -106,34 +106,6 @@ Model Building
 
 Used Random Forest Classifier to predict churn based on customer attributes
 
-Evaluated accuracy and feature importance
-
-![ML Model](screenshots/ml_model_metrics.png)
-
-
-📂 Project Structure
-
-Churn-Analysis-Power-BI-Dashboard/
-
-├── SQL_Scripts/
-
-│   └── ETL_and_Queries.sql
-
-├── PowerBI_Dashboard/
-
-│   └── Churn_Analysis.pbix
-
-├── ML_Model/
-
-│   └── churn_prediction_random_forest.ipynb
-
-├── Prediction_Data.xlsx
-
-├── README.md
-
-└── Screenshots
-
-
 📌 Key Takeaways
 
 Combines descriptive (dashboard) and predictive (ML model) analytics
