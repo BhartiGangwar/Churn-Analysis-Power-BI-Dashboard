@@ -87,7 +87,7 @@ Revenue Contribution by Customer Status
 
 Key Metrics and KPIs on Churn Rate, Total Customers, etc.
 
-📸 Add a screenshot of the main Power BI dashboard here
+📸 screenshot of the main Power BI dashboard here
 ![Dashboard View](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/DemoScreenshot.png?raw=true)
 
 
@@ -97,11 +97,30 @@ Data Preparation
 
 Exported SQL views (vw_ChurnData, vw_JoinData) to Excel using Power BI's SQL Server connection
 
-Saved data as Prediction_Data.xlsx
+Saved data as Prediction_data.xlsx
 
 Model Building
 
 Used Random Forest Classifier to predict churn based on customer attributes
+
+Saved data as Prediction_Data.csv
+
+STEP 6 – Power BI Visualization of Predicted Data
+
+Import CSV Data or Load Predicted data in SQL server & connect to server
+
+Create Measures
+
+Count Predicted Churner = COUNT(Predictions[Customer_ID]) + 0
+
+Title Predicted Churners = “COUNT OF PREDICTED CHURNERS : ” & COUNT(Predictions[Customer_ID])
+
+📸 screenshot of the  Power BI dashboard here after applying ML Model
+
+![Dashboard View]()
+
+
+
 
 📌 Key Takeaways
 
