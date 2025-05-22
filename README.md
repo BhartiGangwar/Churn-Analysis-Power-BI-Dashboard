@@ -115,9 +115,9 @@ Count Predicted Churner = COUNT(Predictions[Customer_ID]) + 0
 
 Title Predicted Churners = “COUNT OF PREDICTED CHURNERS : ” & COUNT(Predictions[Customer_ID])
 
-📸 screenshot of the  Power BI dashboard here after applying ML Model
+📸 screenshot of the  Another pgae of Power BI dashboard after applying ML Model
 
-![Dashboard View]()
+![Dashboard View](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/ChurnAnalysis_prediction.png?raw=true)
 
 
 
