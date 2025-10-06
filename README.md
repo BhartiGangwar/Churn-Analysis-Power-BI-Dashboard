@@ -1,92 +1,151 @@
-# 📊 Churn Analysis Power BI Dashboard
+# 🎯 Customer Churn Analysis & Prediction
 
-This project focuses on a full-stack data workflow to analyze and predict customer churn. It combines **SQL Server** for robust data handling, **Power BI** for dynamic visualizations, and **Machine Learning** (Random Forest Classifier) for predictive insights. The goal is to uncover churn patterns, create a detailed dashboard, and build a model that helps identify and predict potential churners.
+<div align="center">
 
----
+**End-to-End Analytics Solution: SQL Server + Power BI + Machine Learning**
 
-### 🛠️ Tools & Technologies
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)](https://www.microsoft.com/sql-server)
+[![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=power-bi&logoColor=black)](https://powerbi.microsoft.com/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![ML](https://img.shields.io/badge/Random%20Forest-00979D?style=flat-square)](https://scikit-learn.org/)
 
-* **SQL Server:** ETL (Extract, Transform, Load), data cleansing, and view creation.
-* **Power BI:** Data cleaning, modeling, DAX measures, and interactive visualization.
-* **Machine Learning (Python):** Random Forest Classifier for churn prediction.
-
----
-
-### 🚀 Project Workflow
-
-#### 📍 STEP 1: ETL in SQL Server
-
-The initial phase involved preparing the raw data within SQL Server.
-
-* **Data Loading & Exploration:** Imported raw CSV data into a staging table (`stg_Churn`) and performed initial SQL queries to understand gender distribution, contract types, revenue by churn status, and state-wise breakdowns.
-* **Null Handling:** Checked for and handled null values to ensure data quality. Cleaned data was then loaded into a production table (`prod_Churn`).
-* **Views Creation:** Created reusable SQL views (`vw_ChurnData`, `vw_JoinData`) to serve as a clean, reliable data source for both Power BI reporting and machine learning modeling.
-
-#### 📊 STEP 2: Power BI Data Transformation
-
-Data was further refined in Power BI to enhance analytical capabilities.
-
-* **Added New Columns:**
-    * **Churn Status:** A binary flag (`1` for "Churned", `0` otherwise).
-    * **Monthly Charge Range:** Categorized monthly charges into logical bins (e.g., `<20`, `20–50`, `>50`).
-* **Reference Tables for Grouping:** Created separate tables to map `Age` and `Tenure` into predefined groups (e.g., `20–35`, `36–50` and `6–12 months`, `12–18 months`) for consistent sorting and filtering.
-
-#### 📐 STEP 3: Power BI DAX Measures
-
-Custom DAX measures were created to derive meaningful business insights and key metrics.
-
-* `Total Customers = COUNT(prod_Churn[Customer_ID])`
-* `Total Churn = SUM(prod_Churn[Churn Status])`
-* `Churn Rate = [Total Churn] / [Total Customers]`
-* `New Joiners = CALCULATE(COUNT(Customer_ID), Customer_Status = "Joined")`
+</div>
 
 ---
 
-### 📈 STEP 4: Dashboard & Visualization
+## 📖 Overview
 
-An interactive Power BI dashboard was built to visualize churn trends and key metrics.
-
-**Dashboard View:**
-![Dashboard View](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/DemoScreenshot.png?raw=true)
+A comprehensive churn analysis system combining **descriptive analytics** (historical trends) and **predictive analytics** (ML-based forecasting) to identify at-risk customers and enable proactive retention strategies.
 
 ---
 
-### 🤖 STEP 5: Churn Prediction using Machine Learning
+## 🛠️ Tech Stack
 
-A predictive model was developed to forecast which customers are at risk of churning.
-
-* **Data Preparation:** Exported SQL views to a CSV file (`Prediction_Data.csv`) to use as the input for the machine learning model.
-* **Model Building:** Used a **Random Forest Classifier** to train a predictive model based on various customer attributes.
-
----
-
-### 📊 STEP 6: Visualization of Predicted Data
-
-The model's predictions were integrated back into Power BI to create a second, forward-looking dashboard.
-
-**Prediction Dashboard View:**
-![Prediction Dashboard View](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/ChurnAnalysis_prediction.png?raw=true)
-
-* **Predicted Churners:** A new measure, `Count Predicted Churner`, was created to count the customers identified as likely to churn by the model.
+| Component | Purpose |
+|-----------|---------|
+| **SQL Server** | ETL pipeline, data cleansing, view creation |
+| **Power BI** | Interactive dashboards, DAX measures, data modeling |
+| **Python ML** | Random Forest Classifier for churn prediction |
 
 ---
 
-### 📌 Key Takeaways
+## 🚀 Project Workflow
 
-* **Comprehensive Approach:** This project effectively combines descriptive analytics (the dashboard) with predictive analytics (the ML model) for a holistic understanding of customer churn.
-* **Clear Workflow:** It demonstrates a clear, end-to-end data workflow from raw data to actionable business insights.
-* **Scalable Solution:** The integrated model provides a scalable and interpretable solution for proactive customer retention strategies.
+### **1️⃣ SQL Server: Data Engineering**
+- Loaded raw data into staging table (`stg_Churn`)
+- Performed data quality checks and null handling
+- Created production table (`prod_Churn`) and reusable views (`vw_ChurnData`, `vw_JoinData`)
 
+### **2️⃣ Power BI: Data Modeling**
+**Added Calculated Columns:**
+- `Churn Status`: Binary flag (1 = Churned, 0 = Active)
+- `Monthly Charge Range`: Categorized billing (<20, 20-50, 50-100, >100)
 
+**Created Reference Tables:**
+- Age Groups (20-35, 36-50, 51-65, 66+)
+- Tenure Buckets (<6m, 6-12m, 12-18m, 18-24m, 24m+)
 
+### **3️⃣ Key DAX Measures**
 
+```dax
+Total Customers = COUNT(prod_Churn[Customer_ID])
+Total Churn = SUM(prod_Churn[Churn Status])
+Churn Rate = DIVIDE([Total Churn], [Total Customers], 0)
+New Joiners = CALCULATE(COUNT(prod_Churn[Customer_ID]), prod_Churn[Customer_Status] = "Joined")
+```
 
+### **4️⃣ Historical Analytics Dashboard**
 
-    
+<div align="center">
 
+![Dashboard](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/DemoScreenshot.png?raw=true)
 
+</div>
 
+**Key Features:**
+- 📊 KPIs: Total customers, churn rate, revenue metrics
+- 🔍 Dimensional analysis: Demographics, contract types, geography
+- 💰 Financial impact tracking
+- 🎛️ Interactive filters and slicers
 
+### **5️⃣ Machine Learning Pipeline**
+
+**Model:** Random Forest Classifier
+
+**Process:**
+1. Exported SQL views for model training
+2. Feature engineering and selection
+3. Model training with hyperparameter tuning
+4. Generated predictions on customer base
+
+**Top Churn Drivers:**
+- Contract type
+- Tenure duration
+- Monthly charges
+- Service usage patterns
+
+### **6️⃣ Predictive Analytics Dashboard**
+
+<div align="center">
+
+![Prediction Dashboard](https://github.com/BhartiGangwar/Churn-Analysis-Power-BI-Dashboard/blob/main/ChurnAnalysis_prediction.png?raw=true)
+
+</div>
+
+**Features:**
+- 🎯 Count of predicted churners
+- 📈 Risk segmentation (High/Medium/Low)
+- 💼 Targeted retention recommendations
+- 📊 Model performance tracking
+
+---
+
+## 💡 Key Outcomes
+
+<table>
+<tr>
+<td align="center" width="33%">
+<h3>🔍</h3>
+<b>Early Detection</b>
+<br>Identify at-risk customers before they churn
+</td>
+<td align="center" width="33%">
+<h3>📊</h3>
+<b>Data-Driven Insights</b>
+<br>Interactive dashboards for strategic decisions
+</td>
+<td align="center" width="33%">
+<h3>💰</h3>
+<b>Revenue Protection</b>
+<br>Proactive retention strategies
+</td>
+</tr>
+</table>
+
+---
+
+## 🎓 Project Highlights
+
+✅ **End-to-end pipeline** from raw data to actionable insights  
+✅ **Dual analytics approach:** Historical + Predictive  
+✅ **Scalable architecture** ready for production deployment  
+✅ **Business impact:** Quantifiable ROI on customer retention  
+
+---
+
+## 📧 Connect
+
+**Bharti Gangwar** | [GitHub](https://github.com/BhartiGangwar) | [LinkedIn](https://www.linkedin.com/in/bhartigangwar)
+
+---
+
+<div align="center">
+
+⭐ **Star this repo if you find it helpful!** ⭐
+
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BhartiGangwar.Churn-Analysis)
+
+</div>
 
 
 
